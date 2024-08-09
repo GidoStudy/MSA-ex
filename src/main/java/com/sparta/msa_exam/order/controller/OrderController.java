@@ -24,6 +24,12 @@ public class OrderController {
 
     @PutMapping("/{orderId}")
     public void addOrder(@PathVariable long orderId, @RequestParam long product_id) {
+        log.info("addOrder 호출");
         orderService.updateOrder(orderId, product_id);
+    }
+
+    @GetMapping("/{orderId}")
+    public OrderResponseDto getOneOrder(@PathVariable long orderId) {
+        return orderService.getOneOrder(orderId);
     }
 }
